@@ -43,6 +43,7 @@ class Plugin(pwem.Plugin):
     @classmethod
     def _defineVariables(cls):
         cls._defineEmVar(ISONET_HOME, 'isonet-' + ISONET_VERSION)
+        cls._defineVar(ISONET_ACTIVATION_CMD_VAR, DEFAULT_ISONET_ACTIVATION_CMD)
 
     @classmethod
     def getEnviron(cls):
@@ -56,7 +57,7 @@ class Plugin(pwem.Plugin):
 
     @classmethod
     def getIsoNetActivationCmd(cls):
-        return ISONET_ACTIVATION_CMD
+        return cls.getVar(ISONET_ACTIVATION_CMD_VAR)
 
     @classmethod
     def getDependencies(cls):
