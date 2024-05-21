@@ -33,7 +33,7 @@ import emtable
 from pwem.protocols import EMProtocol
 from pyworkflow.constants import BETA
 from pyworkflow.protocol import params
-from pyworkflow.utils import removeBaseExt
+from pyworkflow.utils import removeBaseExt, path
 
 from tomo.objects import Tomogram
 from tomo.protocols import ProtTomoBase
@@ -272,7 +272,7 @@ class ProtIsoNetTomoReconstruction(EMProtocol, ProtTomoBase):
             tomoName = tomo.getTsId()
             tomoLnName = os.path.join(self.tomoPath, tomoName + '.mrc')
             if not os.path.exists(tomoLnName):
-                os.symlink(tomofn, tomoLnName)
+                path.createLink(tomofn, tomoLnName)
 
         pixel_size = self.inputTomograms.get().getSamplingRate()
 
