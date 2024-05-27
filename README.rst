@@ -63,6 +63,26 @@ or through the **plugin manager** by launching Scipion and following **Configura
 
   scipion installp -p local/path/to/scipion-em-isonet --devel
 
+**Configuration variables**
+=========================
+
+There are some *optional* variables related to the IsoNet plugin installation. For example, if you have installed IsoNet outside of Scipion, you may define ``ISONET_HOME`` in your ``scipion.conf`` file for specifying an already existing IsoNet installation path. Note that a directory called ``IsoNet`` is expected to exist *within* this path (create a link if necessary):
+
+.. code-block::
+
+    ISONET_HOME = /path/to/my/own/isonet/install/
+
+In the above example, the directory ``/path/to/my/own/isonet/install/IsoNet`` should exist for the plugin to work.
+
+Also, you can use the ``ISONET_ACTIVATION_CMD`` environment variable to indicate an activation command for IsoNet, which can be a conda environment or anything else (e.g. sourcing a script):
+
+.. code-block::
+
+    ISONET_ACTIVATION_CMD = conda activate my-isonet-env
+
+If these variables are not defined, default values will be used that will work with the
+latest version installed through Scipion.
+
 
 ===============
 Buildbot status
